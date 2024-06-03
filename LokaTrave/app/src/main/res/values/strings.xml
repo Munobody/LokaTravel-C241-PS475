@@ -42,4 +42,16 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="LOGIN_APP_TEXT">LokaTravel</string>
+    <string name="EMAIL">Email</string>
+    <string name="PASSWORD">Password</string>
+    <string name="LOGIN_TEXT">Login</string>
+    <string name="ERROR_EMAIL_EMPTY">Name cannot be empty</string>
+    <string name="ERROR_EMAIL_INVALID_FORMAT">The email format entered is invalid</string>
+    <string name="ERROR_EMAIL_ALREADY_REGISTERED">This email is already registere</string>
+    <string name="HINT_EMAIL">Enter Your Email</string>
+    <string name="ERROR_PASSWORD_EMPTY">Password cannot be empty</string>
+    <string name="ERROR_PASSWORD_LENGTH">Password must be at least 8 characters</string>
+    <string name="ERROR_PASSWORD_MISMATCH">Password and confirm password do not match</string>
+    <string name="HINT_PASSWORD">Enter Your Password</string>
 </resources>
