@@ -31,4 +31,5 @@
     <string name="REGISTER_TEXT">Register</string>
     <string name="TermCondition">I accept term and condition</string>
     <string name="INFO_REGISTER_TEXT">Dont Have an Account?\n</string>
+    <string name="INFO_LOGIN_TEXT">Already Have an Account?</string>
 </resources>
