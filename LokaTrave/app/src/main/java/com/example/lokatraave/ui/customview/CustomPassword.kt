@@ -1,4 +1,4 @@
-package com.example.lokatraave.customview
+package com.example.lokatraave.ui.customview
 
 import android.content.Context
 import android.text.Editable
@@ -6,12 +6,13 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.lokatraave.R
 
-class CustomName : AppCompatEditText, View.OnFocusChangeListener {
+class CustomPassword : AppCompatEditText, View.OnFocusChangeListener {
 
-    private var isNameValid = false
+    private var isPasswordValid = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -31,32 +32,39 @@ class CustomName : AppCompatEditText, View.OnFocusChangeListener {
 
     private fun init() {
         setBackgroundResource(R.drawable.edit_text_background)
-        inputType = InputType.TYPE_CLASS_TEXT
+        inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         onFocusChangeListener = this
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validateName()
+                validatePassword()
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
     }
+
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (!hasFocus) {
-            validateName()
+            validatePassword()
         }
     }
 
-    private fun validateName() {
-        val name = text.toString().trim()
-        isNameValid = name.isNotEmpty() && name.length <= 25
-        error = if (!isNameValid) {
-            if (name.isEmpty()) {
-                resources.getString(R.string.ERROR_NAME_EMPTY)
+    private fun validatePassword() {
+        val password = text.toString().trim()
+        val confirmPassword =
+            (parent as ViewGroup).findViewById<CustomPassword>(R.id.et_Pass).text.toString()
+                .trim()
+
+        isPasswordValid = password.isNotEmpty() && password.length >= 8 && password == confirmPassword
+        error = if (!isPasswordValid) {
+            if (password.isEmpty()) {
+                resources.getString(R.string.ERROR_PASSWORD_EMPTY)
+            } else if (password.length < 8) {
+                resources.getString(R.string.ERROR_PASSWORD_LENGTH)
             } else {
-                resources.getString(R.string.ERROR_NAME_TOOLONG)
+                resources.getString(R.string.ERROR_PASSWORD_MISMATCH)
             }
         } else {
             null

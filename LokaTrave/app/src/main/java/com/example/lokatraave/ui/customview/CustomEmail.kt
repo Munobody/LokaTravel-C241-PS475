@@ -1,4 +1,4 @@
-package com.example.lokatraave.customview
+package com.example.lokatraave.ui.customview
 
 import android.content.Context
 import android.text.Editable

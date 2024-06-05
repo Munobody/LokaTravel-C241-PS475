@@ -120,7 +120,7 @@
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
-                <com.example.lokatraave.customview.CustomName
+                <com.example.lokatraave.ui.customview.CustomName
                     android:id="@+id/et_Name"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -150,7 +150,7 @@
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
-                <com.example.lokatraave.customview.CustomEmail
+                <com.example.lokatraave.ui.customview.CustomEmail
                     android:id="@+id/et_Email"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -180,7 +180,7 @@
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
-                <com.example.lokatraave.customview.CustomPassword
+                <com.example.lokatraave.ui.customview.CustomPassword
                     android:id="@+id/et_Pass"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -210,7 +210,7 @@
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
-                <com.example.lokatraave.customview.CustomPassword
+                <com.example.lokatraave.ui.customview.CustomPassword
                     android:id="@+id/et_ConfirmPass"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"

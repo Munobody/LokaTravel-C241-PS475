@@ -1,4 +1,4 @@
-package com.example.lokatraave.customview
+package com.example.lokatraave.ui.customview
 
 import android.content.Context
 import android.text.Editable
@@ -6,13 +6,12 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.lokatraave.R
 
-class CustomPassword : AppCompatEditText, View.OnFocusChangeListener {
+class CustomName : AppCompatEditText, View.OnFocusChangeListener {
 
-    private var isPasswordValid = false
+    private var isNameValid = false
 
     constructor(context: Context) : super(context) {
         init()
@@ -32,39 +31,32 @@ class CustomPassword : AppCompatEditText, View.OnFocusChangeListener {
 
     private fun init() {
         setBackgroundResource(R.drawable.edit_text_background)
-        inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        inputType = InputType.TYPE_CLASS_TEXT
         onFocusChangeListener = this
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                validatePassword()
+                validateName()
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
     }
-
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (!hasFocus) {
-            validatePassword()
+            validateName()
         }
     }
 
-    private fun validatePassword() {
-        val password = text.toString().trim()
-        val confirmPassword =
-            (parent as ViewGroup).findViewById<CustomPassword>(R.id.et_Pass).text.toString()
-                .trim()
-
-        isPasswordValid = password.isNotEmpty() && password.length >= 8 && password == confirmPassword
-        error = if (!isPasswordValid) {
-            if (password.isEmpty()) {
-                resources.getString(R.string.ERROR_PASSWORD_EMPTY)
-            } else if (password.length < 8) {
-                resources.getString(R.string.ERROR_PASSWORD_LENGTH)
+    private fun validateName() {
+        val name = text.toString().trim()
+        isNameValid = name.isNotEmpty() && name.length <= 25
+        error = if (!isNameValid) {
+            if (name.isEmpty()) {
+                resources.getString(R.string.ERROR_NAME_EMPTY)
             } else {
-                resources.getString(R.string.ERROR_PASSWORD_MISMATCH)
+                resources.getString(R.string.ERROR_NAME_TOOLONG)
             }
         } else {
             null
