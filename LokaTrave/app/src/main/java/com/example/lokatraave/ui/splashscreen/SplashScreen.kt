@@ -1,10 +1,12 @@
-package com.example.lokatraave
+package com.example.lokatraave.ui.splashscreen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import com.example.lokatraave.R
+import com.example.lokatraave.ui.login.LoginActivity
 
 class SplashScreen : AppCompatActivity() {
 

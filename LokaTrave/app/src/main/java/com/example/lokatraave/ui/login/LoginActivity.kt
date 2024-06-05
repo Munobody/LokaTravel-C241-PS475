@@ -1,4 +1,4 @@
-package com.example.lokatraave
+package com.example.lokatraave.ui.login
 
 import android.content.Intent
 import android.graphics.Typeface
@@ -14,6 +14,8 @@ import android.text.style.UnderlineSpan
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.lokatraave.R
+import com.example.lokatraave.ui.register.RegisterActivity
 import com.example.lokatraave.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
