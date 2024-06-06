@@ -51,7 +51,9 @@ class LoginActivity : AppCompatActivity() {
             binding.etEmail.error = emailError
             binding.etPass.error = passwordError
         }
+
     }
+
 
     private fun generateSpannableString(firstPart: String, secondPart: String): Spannable {
         val spannable = SpannableString(firstPart + secondPart)

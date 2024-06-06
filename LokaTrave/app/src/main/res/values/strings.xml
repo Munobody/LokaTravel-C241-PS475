@@ -33,4 +33,7 @@
     <string name="INFO_REGISTER_TEXT">Dont Have an Account?\n</string>
     <string name="INFO_LOGIN_TEXT">Already Have an Account?</string>
     <string name="COPYRIGHT">LokaTravel Right Reserved</string>
+    <string name="welcomeText">Discovering Indonesia: Nature and Culture Unveiled</string>
+    <string name="search">Search\n</string>
+    <string name="HOME_TEXT">Discovering Indonesia: Nature and Culture Unveiled</string>
 </resources>
