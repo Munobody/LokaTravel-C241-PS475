@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,6 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
-<!--        tukar diini-->
         <activity
             android:name=".ui.tourdetail.TourDetailActivity"
             android:exported="false" />
