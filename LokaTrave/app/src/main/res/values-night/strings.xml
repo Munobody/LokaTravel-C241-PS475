@@ -26,4 +26,7 @@
     <string name="welcomeText">Discovering Indonesia: Nature and Culture Unveiled</string>
     <string name="search">Search\n</string>
     <string name="HOME_TEXT">Discovering Indonesia: Nature and Culture Unveiled</string>
+    <string name="home">Home</string>
+    <string name="news">News\n</string>
+    <string name="PROFILE">PROFILE</string>
 </resources>

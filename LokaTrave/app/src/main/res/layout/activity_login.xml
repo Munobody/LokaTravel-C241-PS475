@@ -118,7 +118,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
-            <com.example.lokatraave.ui.customview.CustomEmail
+            <com.example.lokatravel.ui.customview.CustomEmail
                 android:id="@+id/et_Email"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -148,7 +148,7 @@
                 android:textColor="#000000"
                 android:textStyle="bold" />
 
-            <com.example.lokatraave.ui.customview.CustomPassword
+            <com.example.lokatravel.ui.customview.CustomPassword
                 android:id="@+id/et_Pass"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
