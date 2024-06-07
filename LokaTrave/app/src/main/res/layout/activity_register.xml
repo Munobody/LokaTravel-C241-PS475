@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.register.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
@@ -65,14 +66,14 @@
 
             <ImageView
                 android:id="@+id/Iv_Register"
-                android:layout_width="150dp"
-                android:layout_height="134dp"
+                android:layout_width="209dp"
+                android:layout_height="183dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/REGISTER_TEXT"
-                app:srcCompat="@drawable/lokalogo"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/lokalogo" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -128,8 +129,9 @@
                     android:drawableEnd="@drawable/ic_user"
                     android:drawablePadding="8dp"
                     android:hint="@string/HINT_FULL_NAME"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:maxLines="1"
+                    android:minHeight="48dp"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHint="#80837E7E"
@@ -158,11 +160,11 @@
                     android:drawableEnd="@drawable/ic_email"
                     android:drawablePadding="8dp"
                     android:hint="@string/HINT_EMAIL"
-                    android:inputType="phone"
+                    android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:padding="8dp"
                     android:textColor="@color/black"
-                    android:textColorHint="#80837E7E"
+                    android:textColorHint="#757575"
                     android:textSize="14sp" />
 
                 <View
@@ -181,7 +183,7 @@
                     android:textStyle="bold" />
 
                 <com.example.lokatravel.ui.customview.CustomPassword
-                    android:id="@+id/et_Pass"
+                    android:id="@+id/et_Password"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="5dp"

@@ -46,4 +46,6 @@
     <string name="REPORT_BUG">Report Bug\n</string>
     <string name="LOGOUT">Log Out</string>
     <string name="LAST_LOGIN">Last Login</string>
+    <string name="ERROR_PASSWORD_NOTSAME">The password or email you entered is incorrect</string>
+    <string name="ERROR_EDITEXT_EMPTY">Please fill in all fields correctly</string>
 </resources>
