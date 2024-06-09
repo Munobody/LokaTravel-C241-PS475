@@ -32,8 +32,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         val tvRegister = binding.tvRegister
         val tvFirstPart = getString(R.string.INFO_REGISTER_TEXT)
         val tvSecondPart = " " + getString(R.string.REGISTER_TEXT)
@@ -41,11 +39,14 @@ class LoginActivity : AppCompatActivity() {
         tvRegister.text = registerSpannable
         tvRegister.movementMethod = LinkMovementMethod.getInstance()
 
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
+
+            // Tampilkan progress bar
+            showLoading(true)
 
             // Panggil fungsi loginUser di ViewModel
             viewModel.loginUser(email, password)
@@ -53,6 +54,9 @@ class LoginActivity : AppCompatActivity() {
 
         // Observasi hasil login
         viewModel.loginResponse.observe(this, Observer { response ->
+            // Sembunyikan progress bar
+            showLoading(false)
+
             // Jika login berhasil, navigasi ke halaman beranda
             if (response != null) {
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
@@ -63,12 +67,16 @@ class LoginActivity : AppCompatActivity() {
 
         // Observasi error jika terjadi
         viewModel.error.observe(this, Observer { errorMessage ->
+            // Sembunyikan progress bar
+            showLoading(false)
+
             if (errorMessage != null) {
                 // Tampilkan pesan kesalahan
                 Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
     }
+
     private fun generateSpannableString(firstPart: String, secondPart: String): Spannable {
         val spannable = SpannableString(firstPart + secondPart)
         val boldStyleSpan = StyleSpan(Typeface.BOLD)
