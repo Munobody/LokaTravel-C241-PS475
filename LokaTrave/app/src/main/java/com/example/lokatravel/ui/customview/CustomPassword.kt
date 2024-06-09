@@ -54,7 +54,7 @@ class CustomPassword : AppCompatEditText, View.OnFocusChangeListener {
     private fun validatePassword() {
         val password = text.toString().trim()
         val confirmPassword =
-            (parent as ViewGroup).findViewById<CustomPassword>(R.id.et_Pass).text.toString()
+            (parent as ViewGroup).findViewById<CustomPassword>(R.id.et_Password).text.toString()
                 .trim()
 
         isPasswordValid = password.isNotEmpty() && password.length >= 8 && password == confirmPassword

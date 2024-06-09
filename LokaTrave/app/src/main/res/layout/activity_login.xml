@@ -6,7 +6,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    tools:context=".ui.login.LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarlogin"
@@ -126,7 +127,7 @@
                 android:drawableEnd="@drawable/ic_email"
                 android:drawablePadding="8dp"
                 android:hint="@string/HINT_EMAIL"
-                android:inputType="phone"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -149,7 +150,7 @@
                 android:textStyle="bold" />
 
             <com.example.lokatravel.ui.customview.CustomPassword
-                android:id="@+id/et_Pass"
+                android:id="@+id/et_Password"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="5dp"
