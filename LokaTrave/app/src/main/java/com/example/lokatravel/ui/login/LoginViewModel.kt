@@ -7,7 +7,6 @@ import android.util.Log
 import com.example.lokatravel.data.retrofit.ApiConfig
 import com.example.lokatravel.data.response.LoginResponse
 import com.example.lokatravel.data.retrofit.LoginRequest
-import com.example.lokatravel.data.retrofit.RegisterRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

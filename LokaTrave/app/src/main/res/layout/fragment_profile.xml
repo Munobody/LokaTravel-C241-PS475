@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -79,18 +80,8 @@
             tools:text="Messi@gmail.com" />
 
         <TextView
-            android:id="@+id/tv_uid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_email"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="monospace"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="italic"
-            tools:text="user-xxxxxx" />
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="@string/INFO" />
     </RelativeLayout>
 
     <LinearLayout
@@ -98,10 +89,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="300dp"
         android:orientation="vertical">
-
-        <TextView
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="@string/INFO"/>
 
 
         <View
@@ -125,17 +112,6 @@
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_logout"
             android:text="@string/LOGOUT" />
-
-        <TextView
-            android:id="@+id/tv_lastlogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_gravity="right"
-            tools:text="@string/LAST_LOGIN"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
