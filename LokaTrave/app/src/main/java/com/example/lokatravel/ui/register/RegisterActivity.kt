@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.lokatravel.MainActivity
 import com.example.lokatravel.R
 import com.example.lokatravel.databinding.ActivityRegisterBinding
-import com.example.lokatravel.ui.home.HomeActivity
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -71,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
                 val message = response.message
                 val successMessage = "Registration successful: $message"
                 Toast.makeText(this, successMessage, Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@RegisterActivity, HomeActivity::class.java))
+                startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
                 finish()
             }
         }

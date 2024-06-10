@@ -1,5 +1,6 @@
 package com.example.lokatravel.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -12,14 +13,14 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.lokatravel.databinding.ActivityLoginBinding
-import com.example.lokatravel.ui.home.HomeActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.lokatravel.MainActivity
 import com.example.lokatravel.R
+import com.example.lokatravel.databinding.ActivityLoginBinding
 import com.example.lokatravel.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -31,6 +32,18 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Cek status login saat aplikasi dibuka kembali
+        val sharedPreferences = getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
+        )
+        val isLoggedIn = sharedPreferences.getBoolean(getString(R.string.saved_login_status_key), false)
+
+        if (isLoggedIn) {
+            // Jika pengguna sudah login, navigasikan ke MainActivity
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
 
         val tvRegister = binding.tvRegister
         val tvFirstPart = getString(R.string.INFO_REGISTER_TEXT)
@@ -59,8 +72,10 @@ class LoginActivity : AppCompatActivity() {
 
             // Jika login berhasil, navigasi ke halaman beranda
             if (response != null) {
-                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                // Simpan status login menggunakan SharedPreferences
+                saveLoginStatus(true)
+
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 finish()
             }
         })
@@ -75,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
+
     }
 
     private fun generateSpannableString(firstPart: String, secondPart: String): Spannable {
@@ -124,5 +140,15 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun saveLoginStatus(isLoggedIn: Boolean) {
+        val sharedPreferences = getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
+        )
+        with(sharedPreferences.edit()) {
+            putBoolean(getString(R.string.saved_login_status_key), isLoggedIn)
+            apply()
+        }
     }
 }
