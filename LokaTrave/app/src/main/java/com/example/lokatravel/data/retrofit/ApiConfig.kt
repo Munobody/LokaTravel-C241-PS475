@@ -8,26 +8,41 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        fun getApiService(): ApiService {
-            // Interceptor untuk logging HTTP request dan response body
+        // Function to create Retrofit instance for the first base URL
+        fun getFirstApiService(): ApiService {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
                 level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             }
 
-            // Membuat OkHttpClient dengan interceptor yang sudah diset
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
-                // Tambahkan interceptor lain di sini sesuai kebutuhan
                 .build()
 
-            // Membuat Retrofit instance dengan konfigurasi baseUrl dan converter factory
             val retrofit = Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
+                .baseUrl(BuildConfig.FIRST_BASE_URL) // First base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
 
-            // Mengembalikan ApiService yang dibuat oleh Retrofit
+            return retrofit.create(ApiService::class.java)
+        }
+
+        // Function to create Retrofit instance for the second base URL
+        fun getSecondApiService(): ApiService {
+            val loggingInterceptor = HttpLoggingInterceptor().apply {
+                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+            }
+
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BuildConfig.SECOND_BASE_URL) // Second base URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+
             return retrofit.create(ApiService::class.java)
         }
     }

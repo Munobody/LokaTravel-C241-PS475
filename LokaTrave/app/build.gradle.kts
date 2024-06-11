@@ -14,16 +14,23 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        buildConfigField("String", "BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
+
+        buildConfigField ("String", "FIRST_BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
+        buildConfigField ("String", "SECOND_BASE_URL", "\"https://newsapi.org/v2/\"")
+        buildConfigField("String", "API_KEY", "\"e90b9f43849c46338aa2d4c38845d8fa\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
+            buildConfigField ("String", "FIRST_BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
+            buildConfigField ("String", "SECOND_BASE_URL", "\"https://newsapi.org/v2/\"")
         }
         release {
-            buildConfigField("String", "BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
+            buildConfigField ("String", "FIRST_BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
+            buildConfigField ("String", "SECOND_BASE_URL", "\"https://newsapi.org/v2/\"")
+            buildConfigField("String", "API_KEY", "\"e90b9f43849c46338aa2d4c38845d8fa\"")
+
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }

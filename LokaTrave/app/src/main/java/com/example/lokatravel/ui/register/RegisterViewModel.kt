@@ -32,7 +32,7 @@ class RegisterViewModel : ViewModel() {
             return
         }
 
-        val apiService = ApiConfig.getApiService()
+        val apiService = ApiConfig.getFirstApiService()
         val requestBody = RegisterRequest(fullname, email, password, confirmPassword)
         val registerCall = apiService.register(requestBody)
 

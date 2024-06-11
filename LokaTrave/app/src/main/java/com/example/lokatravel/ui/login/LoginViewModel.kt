@@ -27,7 +27,7 @@ class LoginViewModel : ViewModel() {
             return
         }
 
-        val apiService = ApiConfig.getApiService()
+        val apiService = ApiConfig.getFirstApiService()
         val requestBody = LoginRequest(email = email, password = password)
         val loginCall = apiService.login(requestBody)
 
