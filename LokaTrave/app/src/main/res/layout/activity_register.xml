@@ -197,6 +197,12 @@
                     android:textColorHint="#80837E7E"
                     android:textSize="14sp" />
 
+                <CheckBox
+                    android:id="@+id/cbShowPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_password" />
+
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="15dp" />
@@ -227,6 +233,12 @@
                     android:textColorHint="#80837E7E"
                     android:textSize="14sp" />
 
+                <CheckBox
+                    android:id="@+id/cbShowConfirmPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_password" />
+
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -237,7 +249,7 @@
                 android:layout_gravity="center">
 
                 <CheckBox
-                    android:id="@+id/Cb_Location"
+                    android:id="@+id/cbLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
@@ -245,6 +257,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:checked="false" />
+
 
                 <TextView
                     android:id="@+id/Termcondition"
@@ -254,7 +267,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:maxLines="3"
                     android:text="@string/TermCondition"
-                    app:layout_constraintStart_toEndOf="@id/Cb_Location"
+                    app:layout_constraintStart_toEndOf="@id/cbLocation"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />

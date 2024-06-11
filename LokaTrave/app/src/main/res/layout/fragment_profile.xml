@@ -111,7 +111,8 @@
             android:id="@+id/tv_logout"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_logout"
-            android:text="@string/LOGOUT" />
+            android:text="@string/LOGOUT"
+            android:onClick="logout" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

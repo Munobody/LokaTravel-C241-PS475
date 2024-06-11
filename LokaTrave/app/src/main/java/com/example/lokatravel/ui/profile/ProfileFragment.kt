@@ -34,17 +34,20 @@ class ProfileFragment : Fragment() {
         )
         val name = sharedPreferences.getString(getString(R.string.saved_name_key), "")
         val email = sharedPreferences.getString(getString(R.string.saved_email_key), "")
+
+        // Set nama dan email ke TextView
         binding.tvName.text = name
         binding.tvEmail.text = email
 
-        // Tombol log out
+        // Listener untuk tombol logout
         binding.tvLogout.setOnClickListener {
-            // Hapus status login dari SharedPreferences
+            // Panggil fungsi logout
             logout()
+        }
 
-            // Redirect ke halaman login
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            requireActivity().finish()
+        // Listener untuk tombol melaporkan bug
+        binding.tvReport.setOnClickListener {
+            // Implementasi logika untuk melaporkan bug
         }
     }
 
@@ -57,11 +60,18 @@ class ProfileFragment : Fragment() {
         val sharedPreferences = requireActivity().getSharedPreferences(
             getString(R.string.preference_file_key), Context.MODE_PRIVATE
         )
+        // Hapus semua data login dari SharedPreferences
         with(sharedPreferences.edit()) {
-            remove(getString(R.string.saved_login_status_key))
             remove(getString(R.string.saved_name_key))
             remove(getString(R.string.saved_email_key))
+            remove(getString(R.string.saved_login_status_key))
             apply()
         }
+
+        // Redirect ke halaman login
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        requireActivity().finish()
     }
 }

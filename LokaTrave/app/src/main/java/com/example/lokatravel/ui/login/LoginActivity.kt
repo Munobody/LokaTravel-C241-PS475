@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.InputType
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextPaint
@@ -16,7 +17,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.lokatravel.MainActivity
 import com.example.lokatravel.R
@@ -33,16 +33,18 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Cek status login saat aplikasi dibuka kembali
         val sharedPreferences = getSharedPreferences(
             getString(R.string.preference_file_key), Context.MODE_PRIVATE
         )
-        val isLoggedIn = sharedPreferences.getBoolean(getString(R.string.saved_login_status_key), false)
 
+        // Cek status login saat aplikasi dibuka kembali
+        val isLoggedIn = sharedPreferences.getBoolean(getString(R.string.saved_login_status_key), false)
         if (isLoggedIn) {
-            // Jika pengguna sudah login, navigasikan ke MainActivity
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            navigateToMainActivity()
+        }
+
+        binding.tvRegister.setOnClickListener {
+            navigateToRegisterActivity()
         }
 
         val tvRegister = binding.tvRegister
@@ -52,11 +54,12 @@ class LoginActivity : AppCompatActivity() {
         tvRegister.text = registerSpannable
         tvRegister.movementMethod = LinkMovementMethod.getInstance()
 
+
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
+            val email = binding.etEmail.text?.toString() ?: ""
+            val password = binding.etPassword.text?.toString() ?: ""
 
             // Tampilkan progress bar
             showLoading(true)
@@ -66,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Observasi hasil login
-        viewModel.loginResponse.observe(this, Observer { response ->
+        viewModel.loginResponse.observe(this) { response ->
             // Sembunyikan progress bar
             showLoading(false)
 
@@ -74,14 +77,12 @@ class LoginActivity : AppCompatActivity() {
             if (response != null) {
                 // Simpan status login menggunakan SharedPreferences
                 saveLoginStatus(true)
-
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
+                navigateToMainActivity()
             }
-        })
+        }
 
         // Observasi error jika terjadi
-        viewModel.error.observe(this, Observer { errorMessage ->
+        viewModel.error.observe(this) { errorMessage ->
             // Sembunyikan progress bar
             showLoading(false)
 
@@ -89,10 +90,43 @@ class LoginActivity : AppCompatActivity() {
                 // Tampilkan pesan kesalahan
                 Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
-        })
+        }
 
+        // Setup show/hide password functionality
+        binding.cbShowPassword.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.etPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                binding.etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            binding.etPassword.setSelection(binding.etPassword.text?.length ?: 0)
+        }
     }
 
+    private fun navigateToMainActivity() {
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
+    }
+
+    private fun navigateToRegisterActivity() {
+        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun saveLoginStatus(isLoggedIn: Boolean) {
+        val sharedPreferences = getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
+        )
+        with(sharedPreferences.edit()) {
+            putBoolean(getString(R.string.saved_login_status_key), isLoggedIn)
+            apply()
+        }
+    }
     private fun generateSpannableString(firstPart: String, secondPart: String): Spannable {
         val spannable = SpannableString(firstPart + secondPart)
         val boldStyleSpan = StyleSpan(Typeface.BOLD)
@@ -136,19 +170,5 @@ class LoginActivity : AppCompatActivity() {
         )
 
         return spannable
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
-    private fun saveLoginStatus(isLoggedIn: Boolean) {
-        val sharedPreferences = getSharedPreferences(
-            getString(R.string.preference_file_key), Context.MODE_PRIVATE
-        )
-        with(sharedPreferences.edit()) {
-            putBoolean(getString(R.string.saved_login_status_key), isLoggedIn)
-            apply()
-        }
     }
 }
