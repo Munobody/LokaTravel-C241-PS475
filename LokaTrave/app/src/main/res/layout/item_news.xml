@@ -27,6 +27,7 @@
                 tools:src="@drawable/contoh" />
 
             <TextView
+                android:fontFamily="@font/poppins_medium"
                 android:id="@+id/textViewTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,6 +38,7 @@
                 tools:text="News Title" />
 
             <TextView
+                android:fontFamily="@font/poppins_regular"
                 android:id="@+id/textViewDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
