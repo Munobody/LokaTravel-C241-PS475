@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:fontFamily="@font/poppins_extrabold"
+                android:fontFamily="@font/poppins_bold"
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/WELCOME_LOGIN_TEXT"
             android:textColor="#000000"
-            android:textSize="35sp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
         <TextView

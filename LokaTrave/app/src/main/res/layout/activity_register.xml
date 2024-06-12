@@ -28,6 +28,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:fontFamily="@font/poppins_bold"
                     android:id="@+id/registerText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -76,19 +77,21 @@
                 app:srcCompat="@drawable/lokalogo" />
 
             <TextView
+                android:fontFamily="@font/poppins_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/WELCOME_REGISTER_TEXT"
                 android:textColor="#000000"
-                android:textSize="35sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/Iv_Register"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
+                android:fontFamily="@font/poppins_regular"
                 android:id="@+id/tv_Welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,6 +114,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/tv_Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,6 +126,7 @@
                     android:textStyle="bold" />
 
                 <com.example.lokatravel.ui.customview.CustomName
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/et_Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,6 +147,7 @@
                     android:layout_height="14dp" />
 
                 <TextView
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/tv_Email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -153,6 +159,7 @@
                     android:textStyle="bold" />
 
                 <com.example.lokatravel.ui.customview.CustomEmail
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/et_Email"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -172,6 +179,7 @@
                     android:layout_height="15dp" />
 
                 <TextView
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/tv_Password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -183,6 +191,7 @@
                     android:textStyle="bold" />
 
                 <com.example.lokatravel.ui.customview.CustomPassword
+                    android:fontFamily="@font/poppins_regular"
                     android:id="@+id/et_Password"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
