@@ -22,6 +22,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:fontFamily="@font/poppins_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -57,18 +58,19 @@
             android:src="@drawable/ic_user_black" />
 
         <TextView
+            android:fontFamily="@font/poppins_medium"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-medium"
             android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="Lionel Messi" />
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,10 +78,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="12sp"
             tools:text="Messi@gmail.com" />
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             style="@style/viewParent.headerText.settingsMiniTitle"
             android:text="@string/INFO" />
     </RelativeLayout>
@@ -97,6 +100,7 @@
             android:background="#f4f7fe"/>
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/tv_report"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_report"
@@ -108,6 +112,7 @@
             android:background="#f4f7fe"/>
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/tv_logout"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_logout"
