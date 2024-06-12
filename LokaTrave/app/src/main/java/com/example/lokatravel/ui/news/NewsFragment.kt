@@ -40,9 +40,7 @@ class NewsFragment : Fragment() {
             try {
                 val apiService = ApiConfig.getSecondApiService()
                 val newsResponse = apiService.getNews(
-                    query = "Apple",
-                    from = "2024-06-09",
-                    sortBy = "popularity",
+
                     apiKey = "e90b9f43849c46338aa2d4c38845d8fa"
                 )
                 val articles = newsResponse.articles.orEmpty()

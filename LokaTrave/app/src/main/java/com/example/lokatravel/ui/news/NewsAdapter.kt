@@ -1,5 +1,7 @@
 package com.example.lokatravel.ui.news
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,10 +34,19 @@ class NewsAdapter(private val newsList: List<ArticlesItem?>) : RecyclerView.Adap
 
         fun bind(article: ArticlesItem?) {
             textViewTitle.text = article?.title
-            textViewDetail.text = article?.description
+            textViewDetail.text = article?.description.toString()
             Glide.with(itemView.context)
                 .load(article?.urlToImage)
                 .into(imageViewNews)
+
+            // Handle item click
+            itemView.setOnClickListener {
+                article?.url?.let { url ->
+                    // Open URL in a browser or web view
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    itemView.context.startActivity(intent)
+                }
+            }
         }
     }
 }

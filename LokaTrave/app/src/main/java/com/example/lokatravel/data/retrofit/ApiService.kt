@@ -16,11 +16,8 @@ interface ApiService {
     @POST("login")
     fun login(@Body requestBody: LoginRequest): Call<LoginResponse>
 
-    @GET("everything")
+    @GET("top-headlines?country=id")
     suspend fun getNews(
-        @Query("q") query: String,
-        @Query("from") from: String,
-        @Query("sortBy") sortBy: String,
         @Query("apiKey") apiKey: String
     ): NewsResponse
 }
