@@ -52,4 +52,5 @@
     <string name="saved_login_status_key">com.example.lokatravel.PREFERENCE_FILE_KEY</string>
     <string name="saved_name_key">saved</string>
     <string name="saved_email_key">saved\n</string>
+    <string name="show_password">Show Password</string>
 </resources>

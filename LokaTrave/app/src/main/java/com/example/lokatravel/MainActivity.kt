@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.lokatravel.databinding.ActivityMainBinding
 import com.example.lokatravel.ui.home.HomeFragment
+import com.example.lokatravel.ui.news.NewsFragment
 import com.example.lokatravel.ui.profile.ProfileFragment
 
 @Suppress("DEPRECATION")
@@ -25,11 +26,11 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(HomeFragment())
                     true
                 }
-//                R.id.maps -> {
-//                    currentFragmentId = R.id.maps
-//                    replaceFragment(MapsFragment())
-//                    true
-//                }
+                R.id.news -> {
+                    currentFragmentId = R.id.news
+                    replaceFragment(NewsFragment())
+                    true
+                }
                 R.id.profile -> {
                     currentFragmentId = R.id.profile
                     replaceFragment(ProfileFragment())
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         when (currentFragmentId) {
             R.id.beranda -> replaceFragment(HomeFragment())
             R.id.profile -> replaceFragment(ProfileFragment())
-//            R.id.maps -> replaceFragment(MapsFragment())
+            R.id.news -> replaceFragment(NewsFragment())
         }
     }
 
