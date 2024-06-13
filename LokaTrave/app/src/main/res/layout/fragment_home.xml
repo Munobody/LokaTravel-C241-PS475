@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/poppins_bold"
             android:id="@+id/textView"
             android:layout_width="332dp"
             android:layout_height="124dp"
@@ -71,6 +72,7 @@
             tools:visibility="visible" />
 
         <TextView
+            android:fontFamily="@font/poppins_medium"
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

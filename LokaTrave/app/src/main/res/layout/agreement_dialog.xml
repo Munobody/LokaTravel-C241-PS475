@@ -6,6 +6,7 @@
     android:padding="16dp">
 
     <TextView
+        android:fontFamily="@font/poppins_medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Terms and Conditions"
@@ -13,12 +14,14 @@
         android:textStyle="bold" />
 
     <TextView
+        android:fontFamily="@font/poppins_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Here are the terms and conditions..." />
 
     <Button
+        android:fontFamily="@font/poppins_medium"
         android:id="@+id/btnAgree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
