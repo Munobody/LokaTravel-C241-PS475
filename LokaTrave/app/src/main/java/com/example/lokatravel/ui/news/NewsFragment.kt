@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lokatravel.R
 import com.example.lokatravel.data.retrofit.ApiConfig
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -35,6 +36,7 @@ class NewsFragment : Fragment() {
         getNews()
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun getNews() {
         GlobalScope.launch(Dispatchers.Main) {
             try {

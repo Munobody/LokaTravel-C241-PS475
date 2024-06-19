@@ -293,7 +293,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/light_blue_900"
                     android:text="@string/REGISTER_TEXT"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

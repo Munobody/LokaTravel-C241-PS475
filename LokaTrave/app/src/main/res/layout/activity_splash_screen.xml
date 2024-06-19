@@ -34,4 +34,12 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="213dp"
+        android:layout_height="68dp"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="580dp"
+        tools:srcCompat="@drawable/wonderfull" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
