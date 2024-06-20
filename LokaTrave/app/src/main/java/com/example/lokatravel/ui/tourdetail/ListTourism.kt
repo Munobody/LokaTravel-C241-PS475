@@ -1,14 +1,19 @@
 package com.example.lokatravel.ui.tourdetail
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lokatravel.R
+import com.example.lokatravel.data.retrofit.ApiConfig
+import com.example.lokatravel.data.response.JakartaResponseItem
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import android.widget.Toast
 
-@Suppress("DEPRECATION")
 class ListTourism : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
@@ -33,19 +38,35 @@ class ListTourism : AppCompatActivity() {
         val tourTitle = intent.getStringExtra("TOUR_TITLE")
         supportActionBar?.title = tourTitle
 
-        // Replace with your logic to fetch data and update adapter
-        val dataList = fetchDataForTourismList()
-        adapter.updateData(dataList)
+        // Fetch data from API
+        if (tourTitle != null) {
+            fetchTourismData(tourTitle.lowercase()) // Ensure the title is in lowercase
+        }
+    }
 
-        // Set item click listener
-        adapter.setOnItemClickListener(object : TourismListAdapter.OnItemClickListener {
-            override fun onItemClick(item: TourismItem) {
-                // Handle item click here
-                val intent = Intent(this@ListTourism, TourDetailActivity::class.java).apply {
-                    putExtra("TOUR_TITLE", item.nama) // Pass data to TourDetailActivity
-                    putExtra("TOUR_IMAGE", item.imageResId)
+    private fun fetchTourismData(city: String) {
+        val formattedCity = city.replaceFirstChar { it.uppercase() } // Capitalize the first letter
+        val apiService = ApiConfig.getThirdApiService().getTourismDataByCity(formattedCity)
+        apiService.enqueue(object : Callback<List<JakartaResponseItem>> {
+            override fun onResponse(call: Call<List<JakartaResponseItem>>, response: Response<List<JakartaResponseItem>>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        // Log the entire response for debugging
+                        Log.d("ListTourism", "Response: $it")
+
+                        adapter.updateData(it.map { item ->
+                            TourismItem(item.placeName ?: "Unknown", item.category ?: "Unknown", "No details", R.drawable.contoh)
+                        })
+                    }
+                } else {
+                    Log.e("ListTourism", "Failed to fetch data: ${response.message()}")
+                    Toast.makeText(this@ListTourism, "Failed to fetch data: ${response.message()}", Toast.LENGTH_LONG).show()
                 }
-                startActivity(intent)
+            }
+
+            override fun onFailure(call: Call<List<JakartaResponseItem>>, t: Throwable) {
+                Log.e("ListTourism", "Error: ${t.message}")
+                Toast.makeText(this@ListTourism, "Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -53,16 +74,5 @@ class ListTourism : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
-
-    private fun fetchDataForTourismList(): List<TourismItem> {
-        // Replace this with your logic to fetch data for the RecyclerView
-        // For example, you can fetch from a database or network
-        return listOf(
-            TourismItem("Place 1", "Category 1", "Description 1", R.drawable.contoh),
-            TourismItem("Place 2", "Category 2", "Description 2", R.drawable.contoh),
-            TourismItem("Place 3", "Category 3", "Description 3", R.drawable.contoh)
-            // Add more items as needed
-        )
     }
 }

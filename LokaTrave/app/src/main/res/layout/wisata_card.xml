@@ -37,10 +37,10 @@
             android:paddingEnd="8dp"/>
 
         <TextView
-            android:id="@+id/textDetailWisata"
+            android:id="@+id/textkotalWisata"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detail Wisata"
+            android:text="Kota Wisata"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:padding="8dp"/>

@@ -1,8 +1,8 @@
 package com.example.lokatravel.ui.tourdetail
+
 data class TourismItem(
-    val nama: String,
-    val kategori: String,
-    val detail: String,
+    val placeName: String,
+    val category: String,
+    val details: String,
     val imageResId: Int
 )
-

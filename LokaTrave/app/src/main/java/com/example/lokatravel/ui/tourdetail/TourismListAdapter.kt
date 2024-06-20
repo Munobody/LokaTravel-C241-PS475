@@ -49,12 +49,12 @@ class TourismListAdapter(private var items: List<TourismItem>) :
     class TourismViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textNamaWisata: TextView = itemView.findViewById(R.id.textNamaWisata)
         private val textKategori: TextView = itemView.findViewById(R.id.textKategori)
-        private val textDetailWisata: TextView = itemView.findViewById(R.id.textDetailWisata)
+        private val textDetailWisata: TextView = itemView.findViewById(R.id.textkotalWisata)
 
         fun bind(item: TourismItem) {
-            textNamaWisata.text = item.nama
-            textKategori.text = item.kategori
-            textDetailWisata.text = item.detail
+            textNamaWisata.text = item.placeName
+            textKategori.text = item.category
+            textDetailWisata.text = item.details
         }
     }
 }

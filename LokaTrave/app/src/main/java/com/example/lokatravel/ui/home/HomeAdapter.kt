@@ -12,7 +12,7 @@ class HomeAdapter(
     private val items: List<HomeViewModel>,
     private val leftClickListener: OnLeftItemClickListener?,
     private val rightClickListener: OnRightItemClickListener?
-) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     interface OnLeftItemClickListener {
         fun onLeftItemClick(data: HomeViewModel)
@@ -22,29 +22,26 @@ class HomeAdapter(
         fun onRightItemClick(data: HomeViewModel)
     }
 
-    inner class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageViewCard: ImageView = itemView.findViewById(R.id.imageViewCard)
-        private val textViewCard: TextView = itemView.findViewById(R.id.textViewCard)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
+        return ViewHolder(view)
+    }
 
-        fun bind(data: HomeViewModel) {
-            imageViewCard.setImageResource(data.imageResId)
-            textViewCard.text = data.name
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        holder.imageViewCard.setImageResource(item.imageResId)
+        holder.textViewCardTitle.text = item.name
 
-            itemView.setOnClickListener {
-                leftClickListener?.onLeftItemClick(data)
-                rightClickListener?.onRightItemClick(data)
-            }
+        holder.itemView.setOnClickListener {
+            leftClickListener?.onLeftItemClick(item)
+            rightClickListener?.onRightItemClick(item)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
-        return HomeViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.bind(items[position])
-    }
-
     override fun getItemCount(): Int = items.size
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageViewCard: ImageView = view.findViewById(R.id.imageViewCard)
+        val textViewCardTitle: TextView = view.findViewById(R.id.textViewCard)
+    }
 }
