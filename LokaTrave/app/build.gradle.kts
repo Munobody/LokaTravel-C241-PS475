@@ -21,6 +21,7 @@ android {
 
         buildConfigField ("String", "FIRST_BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
         buildConfigField ("String", "SECOND_BASE_URL", "\"https://newsapi.org/v2/\"")
+        buildConfigField ("String", "THIRD_BASE_URL", "\"https://tourism-data-api-k4qtulmtyq-et.a.run.app/places/\"")
         buildConfigField("String", "API_KEY", "\"e90b9f43849c46338aa2d4c38845d8fa\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,10 +30,12 @@ android {
         debug {
             buildConfigField ("String", "FIRST_BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
             buildConfigField ("String", "SECOND_BASE_URL", "\"https://newsapi.org/v2/\"")
+            buildConfigField ("String", "THIRD_BASE_URL", "\"https://tourism-data-api-k4qtulmtyq-et.a.run.app/places/\"")
         }
         release {
             buildConfigField ("String", "FIRST_BASE_URL", "\"https://authentication-api-k4qtulmtyq-et.a.run.app/\"")
             buildConfigField ("String", "SECOND_BASE_URL", "\"https://newsapi.org/v2/\"")
+            buildConfigField ("String", "THIRD_BASE_URL", "\"https://tourism-data-api-k4qtulmtyq-et.a.run.app/places/\"")
             buildConfigField("String", "API_KEY", "\"e90b9f43849c46338aa2d4c38845d8fa\"")
 
             isMinifyEnabled = false

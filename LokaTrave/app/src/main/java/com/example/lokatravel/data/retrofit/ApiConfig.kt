@@ -11,7 +11,8 @@ class ApiConfig {
         // Function to create Retrofit instance for the first base URL
         fun getFirstApiService(): ApiService {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
-                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                level =
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             }
 
             val client = OkHttpClient.Builder()
@@ -30,7 +31,8 @@ class ApiConfig {
         // Function to create Retrofit instance for the second base URL
         fun getSecondApiService(): ApiService {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
-                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                level =
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             }
 
             val client = OkHttpClient.Builder()
@@ -39,6 +41,25 @@ class ApiConfig {
 
             val retrofit = Retrofit.Builder()
                 .baseUrl(BuildConfig.SECOND_BASE_URL) // Second base URL
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+
+            return retrofit.create(ApiService::class.java)
+        }
+
+        fun getThirdApiService(): ApiService {
+            val loggingInterceptor = HttpLoggingInterceptor().apply {
+                level =
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+            }
+
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BuildConfig.THIRD_BASE_URL) // Third base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

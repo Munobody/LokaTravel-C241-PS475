@@ -74,22 +74,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tour_title" />
 
-        <!-- Detail Wisata -->
-        <TextView
-            android:id="@+id/tour_detail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:padding="16dp"
-            android:text="Detail Wisata"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tour_category" />
 
         <!-- MapView -->
         <androidx.cardview.widget.CardView
@@ -101,7 +85,7 @@
             app:cardElevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tour_detail">
+            app:layout_constraintTop_toBottomOf="@id/tour_category">
 
             <fragment
                 android:id="@+id/mapView"

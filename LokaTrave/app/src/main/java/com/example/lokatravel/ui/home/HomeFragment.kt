@@ -1,4 +1,5 @@
 package com.example.lokatravel.ui.home
+
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -27,6 +28,8 @@ class HomeFragment : Fragment() {
     private lateinit var searchEditText: EditText
     private lateinit var searchButton: Button
 
+    private lateinit var model: CollaborativeModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +45,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize model with context
+        model = CollaborativeModel(requireContext())
+
         setupRecyclerViews()
 
         // Start auto-scroll handlers
@@ -52,6 +58,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         handlerLeft.removeCallbacks(runnableLeft)
         handlerRight.removeCallbacks(runnableRight)
+        model.close() // Release model resources
     }
 
     private fun setupRecyclerViews() {
