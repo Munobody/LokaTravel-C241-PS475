@@ -1,0 +1,7 @@
+<!-- bottom_navigation_text_color.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Item selected -->
+    <item android:color="@color/black" android:state_checked="true" />
+    <!-- Item unselected -->
+    <item android:color="@android:color/darker_gray" />
+</selector>

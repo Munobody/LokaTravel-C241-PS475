@@ -23,7 +23,7 @@ class LoginViewModel : ViewModel() {
 
     fun loginUser(email: String, password: String) {
         if (email.isBlank() || password.isBlank()) {
-            _error.value = "Email and password are required"
+            _error.value = "Email dan kata sandi wajib diisi"
             return
         }
 
@@ -45,7 +45,11 @@ class LoginViewModel : ViewModel() {
                         _error.value = "Empty response body"
                     }
                 } else {
-                    _error.value = "Login failed: ${response.message()}"
+                    if (response.code() == 401) {
+                        _error.value = "Username atau kata sandi salah"
+                    } else {
+                        _error.value = "Login failed: ${response.message()}"
+                    }
                 }
             }
 

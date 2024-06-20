@@ -1,5 +1,5 @@
 package com.example.lokatravel.data.retrofit
-import com.example.lokatravel.BuildConfig
+
 import com.example.lokatravel.data.response.LoginResponse
 import com.example.lokatravel.data.response.NewsResponse
 import com.example.lokatravel.data.response.RegisterResponse
@@ -16,7 +16,7 @@ interface ApiService {
     @POST("login")
     fun login(@Body requestBody: LoginRequest): Call<LoginResponse>
 
-    @GET("top-headlines?country=id")
+    @GET("top-headlines?sources=bbc-news")
     suspend fun getNews(
         @Query("apiKey") apiKey: String
     ): NewsResponse

@@ -14,7 +14,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -54,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
         tvRegister.text = registerSpannable
         tvRegister.movementMethod = LinkMovementMethod.getInstance()
 
-
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.btnLogin.setOnClickListener {
@@ -73,11 +72,11 @@ class LoginActivity : AppCompatActivity() {
             // Sembunyikan progress bar
             showLoading(false)
 
-            // Jika login berhasil, navigasi ke halaman beranda
+            // Jika login berhasil, tampilkan dialog konfirmasi
             if (response != null) {
                 // Simpan status login menggunakan SharedPreferences
                 saveLoginStatus(true)
-                navigateToMainActivity()
+                showSuccessDialog()
             }
         }
 
@@ -87,8 +86,8 @@ class LoginActivity : AppCompatActivity() {
             showLoading(false)
 
             if (errorMessage != null) {
-                // Tampilkan pesan kesalahan
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                // Tampilkan pesan kesalahan menggunakan dialog
+                showErrorDialog(errorMessage)
             }
         }
 
@@ -127,6 +126,25 @@ class LoginActivity : AppCompatActivity() {
             apply()
         }
     }
+
+    private fun showSuccessDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Login berhasil!")
+            .setPositiveButton("OK") { _, _ ->
+                navigateToMainActivity()
+            }
+        builder.create().show()
+    }
+
+    private fun showErrorDialog(errorMessage: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(" $errorMessage ")
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.create().show()
+    }
+
     private fun generateSpannableString(firstPart: String, secondPart: String): Spannable {
         val spannable = SpannableString(firstPart + secondPart)
         val boldStyleSpan = StyleSpan(Typeface.BOLD)

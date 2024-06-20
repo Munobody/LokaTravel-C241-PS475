@@ -198,7 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/primary"
                 android:text="@string/LOGIN_TEXT"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

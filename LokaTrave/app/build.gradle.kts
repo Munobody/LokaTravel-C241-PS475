@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -46,6 +50,7 @@ android {
         viewBinding = true
         buildConfig = true
         dataBinding = true
+        mlModelBinding = true
     }
 }
 
@@ -60,6 +65,12 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.espresso.idling.resource)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.play.services.maps)
+    implementation(libs.androidx.core)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.tensorflow.lite.gpu)
+    implementation(libs.play.services.fitness)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +83,15 @@ dependencies {
     implementation ("androidx.datastore:datastore-preferences:1.1.1")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.1")
+
+
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    // Maps
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    implementation ("org.tensorflow:tensorflow-lite:2.8.0")
+    implementation ("org.tensorflow:tensorflow-lite-support:0.2.0")
 }

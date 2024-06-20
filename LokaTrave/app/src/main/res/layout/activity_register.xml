@@ -74,7 +74,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/lokalogo" />
+                app:srcCompat="@drawable/logofix" />
 
             <TextView
                 android:fontFamily="@font/poppins_medium"
@@ -293,7 +293,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/light_blue_900"
                     android:text="@string/REGISTER_TEXT"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
