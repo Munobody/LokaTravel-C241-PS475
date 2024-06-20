@@ -6,7 +6,7 @@
     tools:context=".ui.news.NewsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="@drawable/test1"
+        android:background="@drawable/lalala"
         android:id="@+id/recyclerViewNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

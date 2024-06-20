@@ -47,13 +47,11 @@ class TourismListAdapter(private var items: List<TourismItem>) :
     }
 
     class TourismViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageWisata: ImageView = itemView.findViewById(R.id.imageWisata)
         private val textNamaWisata: TextView = itemView.findViewById(R.id.textNamaWisata)
         private val textKategori: TextView = itemView.findViewById(R.id.textKategori)
         private val textDetailWisata: TextView = itemView.findViewById(R.id.textDetailWisata)
 
         fun bind(item: TourismItem) {
-            imageWisata.setImageResource(item.imageResId)
             textNamaWisata.text = item.nama
             textKategori.text = item.kategori
             textDetailWisata.text = item.detail

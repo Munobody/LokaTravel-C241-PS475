@@ -4,4 +4,3 @@ data class HomeViewModel(
     val name: String,
     val imageResId: Int
 )
-

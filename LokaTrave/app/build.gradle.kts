@@ -50,6 +50,7 @@ android {
         viewBinding = true
         buildConfig = true
         dataBinding = true
+        mlModelBinding = true
     }
 }
 
@@ -66,6 +67,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     implementation(libs.play.services.maps)
     implementation(libs.androidx.core)
+    implementation(libs.tensorflow.lite.support)
+    implementation(libs.tensorflow.lite.metadata)
+    implementation(libs.tensorflow.lite.gpu)
+    implementation(libs.play.services.fitness)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -86,4 +91,7 @@ dependencies {
     // Maps
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.2.0")
+
+    implementation ("org.tensorflow:tensorflow-lite:2.8.0")
+    implementation ("org.tensorflow:tensorflow-lite-support:0.2.0")
 }

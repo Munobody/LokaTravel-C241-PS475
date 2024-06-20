@@ -74,7 +74,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/lokalogo" />
+                app:srcCompat="@drawable/logofix" />
 
             <TextView
                 android:fontFamily="@font/poppins_medium"

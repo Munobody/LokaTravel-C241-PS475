@@ -5,7 +5,7 @@
     android:id="@+id/fragment_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/test3"
+    android:background="@drawable/lala"
     tools:context=".ui.profile.ProfileFragment">
 
     <ImageView
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:background="@drawable/test3"
+        android:background="@drawable/lalala"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
