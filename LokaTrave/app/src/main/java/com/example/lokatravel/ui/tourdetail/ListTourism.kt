@@ -1,7 +1,9 @@
 package com.example.lokatravel.ui.tourdetail
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +14,6 @@ import com.example.lokatravel.data.response.JakartaResponseItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.widget.Toast
 
 class ListTourism : AppCompatActivity() {
 
@@ -42,6 +43,19 @@ class ListTourism : AppCompatActivity() {
         if (tourTitle != null) {
             fetchTourismData(tourTitle.lowercase()) // Ensure the title is in lowercase
         }
+
+        // Set item click listener
+        adapter.setOnItemClickListener(object : TourismListAdapter.OnItemClickListener {
+            override fun onItemClick(item: TourismItem) {
+                val intent = Intent(this@ListTourism, TourDetailActivity::class.java).apply {
+                    putExtra("PLACE_NAME", item.placeName)
+                    putExtra("CATEGORY", item.category)
+                    putExtra("LAT", item.lat)
+                    putExtra("LONG", item.long)
+                }
+                startActivity(intent)
+            }
+        })
     }
 
     private fun fetchTourismData(city: String) {
@@ -55,7 +69,14 @@ class ListTourism : AppCompatActivity() {
                         Log.d("ListTourism", "Response: $it")
 
                         adapter.updateData(it.map { item ->
-                            TourismItem(item.placeName ?: "Unknown", item.category ?: "Unknown", "No details", R.drawable.contoh)
+                            TourismItem(
+                                item.placeName ?: "Unknown",
+                                item.category ?: "Unknown",
+                                "No details",
+                                R.drawable.contoh,
+                                item.lat ?: 0.0, // Use 0.0 as a default value
+                                item.long ?: 0.0  // Use 0.0 as a default value
+                            )
                         })
                     }
                 } else {

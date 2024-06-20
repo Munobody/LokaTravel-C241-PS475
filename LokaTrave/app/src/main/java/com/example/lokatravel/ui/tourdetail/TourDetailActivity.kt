@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.RatingBar
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -50,6 +51,19 @@ class TourDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         // Initialize views
         ratingBar = findViewById(R.id.tour_rating)
         feedbackEditText = findViewById(R.id.tour_feedback)
+
+        // Get location data from intent
+        val placeName = intent.getStringExtra("PLACE_NAME")
+        val category = intent.getStringExtra("CATEGORY")
+
+        // Set title and category text
+        supportActionBar?.title = placeName
+        // Example: You can set the category to a TextView or any other appropriate view
+        // For example, assuming you have a TextView with id textCategory in your layout:
+        val categoryTextView: TextView = findViewById(R.id.tour_category)
+        categoryTextView.text = "$category"
+        val placenameTextView: TextView = findViewById(R.id.tour_title)
+        placenameTextView.text = "$placeName"
 
         // Setup rating bar listener
         ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
@@ -105,9 +119,13 @@ class TourDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.isMapToolbarEnabled = true
 
-        // Add a marker and move camera to a location
-        val location = LatLng(4.492986, 97.963628) // Replace with your actual coordinates
-        mMap.addMarker(MarkerOptions().position(location).title("Marker in Langsa"))
+        // Get location data from intent
+        val lat = intent.getDoubleExtra("LAT", 0.0)
+        val long = intent.getDoubleExtra("LONG", 0.0)
+
+        // Add a marker and move camera to the location
+        val location = LatLng(lat, long)
+        mMap.addMarker(MarkerOptions().position(location).title("Marker in ${intent.getStringExtra("PLACE_NAME")}"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }
 
