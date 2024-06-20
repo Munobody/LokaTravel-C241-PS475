@@ -4,5 +4,7 @@ data class TourismItem(
     val placeName: String,
     val category: String,
     val details: String,
-    val imageResId: Int
+    val imageResId: Int,
+    val lat: Double,
+    val long: Double
 )
