@@ -126,10 +126,14 @@ class HomeFragment : Fragment() {
 
     private fun fetchLeftData(): List<HomeViewModel> {
         val dataList = mutableListOf<HomeViewModel>()
-        dataList.add(HomeViewModel("Jakarta", R.drawable.contoh))
-        dataList.add(HomeViewModel("Yogyakarta", R.drawable.contoh))
-        dataList.add(HomeViewModel("Bandung", R.drawable.contoh))
-        dataList.add(HomeViewModel("Semarang", R.drawable.contoh))
+        dataList.add(HomeViewModel("Monumen Nasional", R.drawable.monas))
+        dataList.add(HomeViewModel("Candi Borobudur", R.drawable.candiborobudur))
+        dataList.add(HomeViewModel("Kawah Putih", R.drawable.kawahputih))
+        dataList.add(HomeViewModel("Lawang Sewu", R.drawable.lawangsewu))
+        dataList.add(HomeViewModel("Jembatan Suramadu", R.drawable.jembatansuramadu))
+        dataList.add(HomeViewModel("Pantai Kuta", R.drawable.pantaikuta))
+        dataList.add(HomeViewModel("Istana Maimun", R.drawable.istanamaimun))
+        dataList.add(HomeViewModel("Air Terjun Mojokerto", R.drawable.airterjunmojokerto))
         return dataList
     }
 
